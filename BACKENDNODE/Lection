@@ -1,0 +1,121 @@
+############################
+####Que son los metodos?####
+############################
+
+Es lo que le dice al servidor que queremos hacer.
+
+'GET'
+
+Para Recoger Información del servidor.
+
+'POST'
+
+Para añadir información al servidor.
+
+'PUT'
+
+Para reemplazar información en el servidor.
+
+'PATCH'
+
+Actualizar parte de la información.
+
+'DELETE'
+
+Eliminar información del servidor.
+
+
+
+##############################
+####Que son las cabeceras?####
+##############################
+
+Las cabeceras serán el envío al servidor de cómo queremos hacer la petición.
+
+Indicaciones.
+Condiciones.
+
+'Caché'
+
+Gestiona durante cuanto tiempo la respuesta será la misma, es un tipo de almacenamiento temporal.
+
+'Autenticación'
+
+Tambien como Authorization delimita que usuarios tiene acceso a cierta información del servidor.
+
+'Accept'
+
+Define el tipo de contenido que acepta el servidor, como si acepta solo en JSON o HTML, o que nesecitas cierto tipo de charset o enconding.
+
+'Cors'
+
+"Cross-Origin-Resource-Sharing", delimita desde que origen se puede consumir.
+
+'Cookies'
+
+Compartir información entre peticiones, el navegador y el servidor siempre va a mantener esta cbcra en las peticiones y podremos almacenar info y acceder a ella automaticamente, como que usuario soy o etc.
+
+
+
+#############################
+####Que son los Estados?#####
+#############################
+
+Es un numero que indica que ha pasado con la petición.
+
+2XX: Todo ha ido bien.
+	(e.g 200: OK, 201: CREATED ).
+
+3XX: La petición se ha redirigido.
+	(e.g 301: Moved Permanently, 304: Not Modified).
+
+4XX: Errores del cliente.
+	(e.g 400: Bad Request, 401: Unauthorized, 403: Forbidden, 404: Not Found).
+
+5XX: Errores del servidor.
+	(e.g 500: Internal server error).
+
+
+
+#########################################
+####Que es el cuerpo de una petición?####
+#########################################
+
+Es la infomración en si que queremos retirar, añadir, modificar, etc.
+
+		##########
+	##Que Tiene y como viene?##
+		##########
+
+Depende de las cabeceras.
+	-La cabecera 'Content-Type' define que tipo de dato devuelve.
+	
+	-La cabecera 'Content-length' define que tan largo es.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,20 +1,27 @@
 const express = require('express');
 const response = require('../../network/response');
+const controller = require('./controller');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    console.log(req.headers);
-    res.setHeader("custom-header","Default Value");
-    response.succes(req, res, 'Lista de Mensajes');
+    controller.getMessages()
+        .then((messageList) => {
+            response.succes(req, res, messageList, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Error Inesperado', 500, e);
+        });
 });
 
 router.post('/', (req, res) => {
-    console.log(req.body.error);
-    if (req.query.error == "ok") {
-        response.error(req, res, 'Error Inesperado', 500, 'Es una simulación de un error');
-    }else {
-        response.succes(req, res, 'Creado Correctamente', 201);
-    }    
+    
+    controller.addMessage(req.body.user, req.body.message)
+        .then((fullMessage) => {
+            response.succes(req, res, fullMessage, 201);
+        })
+        .catch(e => {
+            response.error(req, res, 'Información invalida', 400, 'Error en el controlador');
+        }); 
 });
 
 module.exports = router;

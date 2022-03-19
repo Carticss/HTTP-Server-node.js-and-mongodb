@@ -24,7 +24,32 @@ let getMessages = () => {
     })
 }
 
+let updateMessage = (id, message) => {
+    return new Promise(async (resolve, reject) => {
+        console.log(id, message);
+        if (!id || !message) {
+            reject('Invalid Data');
+            return false;
+        }
+        const result = await store.updateMessage(id, message);
+        resolve(result);
+    })
+}
+
+let deleteMessage = (id) => {
+    return new Promise((resolve, reject) => {
+        if(!id){
+            reject('Id invalido')
+            return false;
+        }
+        store.remove(id);           
+        resolve();
+    }) 
+}
+
 module.exports = {
     addMessage,
-    getMessages
+    getMessages,
+    updateMessage,
+    deleteMessage,
 }

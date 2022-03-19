@@ -1,12 +1,4 @@
-const db = require('mongoose');
 const Model = require('./model');
-require('dotenv').config()
-
-db.Promise = global.Promise;
-db.connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-});
-console.log('[db] Conectada con exito');
 
 let addMessage = (message) => {
     //list.push(message);
@@ -20,9 +12,26 @@ let getMessage = async () => {
     return messages;
 }
 
+let updateMessage = async (id, message) => {
+    const foundMessage = await Model.findOne({
+        _id: id
+    })
+    foundMessage.message = message;
+    const newMessage = await foundMessage.save();
+    return newMessage;
+}
+
+let removeMessage = async (id) => {
+    return Model.deleteOne({
+        _id: id
+    });
+}
+
 module.exports = {
     add: addMessage,
     list: getMessage,
+    updateMessage: updateMessage,
+    remove: removeMessage,
     //get
     //update
     //delete

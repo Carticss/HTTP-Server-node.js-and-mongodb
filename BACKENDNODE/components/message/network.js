@@ -24,4 +24,24 @@ router.post('/', (req, res) => {
         }); 
 });
 
+router.patch('/:id', (req, res) => {
+    controller.updateMessage(req.params.id, req.body.message)
+        .then(data => {
+            response.succes(req, res, data, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Error Interno', 500, e);
+        });
+});
+
+router.delete('/:id', (req, res) => {
+    controller.deleteMessage(req.params.id)
+        .then(() => {
+            response.succes(req, res, `Mensaje ${req.params.id} eliminado`, 200)
+        })
+        .catch (e => {
+            response.error(req, res, 'Error Interno', 500, e);
+        })
+});
+
 module.exports = router;
